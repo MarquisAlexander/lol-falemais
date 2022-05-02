@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
 
+import {colors} from '../../assets/colors';
 import {api} from '../../services/api';
 
 import {
@@ -12,23 +12,24 @@ import {
   Button,
   ContainerButton,
   ButtonPlan,
+  TextButtonPlan,
+  TextHeader,
+  TextButton,
+  ContentPrices,
 } from './styles';
 
 const INITIAL_STATE = {
   origin: 0,
-  destination: 0,
+  destine: 0,
+  time: 0,
   plan: 0,
 };
 
 async function calculatePrices({form = {}}) {
   try {
-    console.log('form', form);
-    const response = await api.get('/calcpriceplan');
-    console.log('response', response.data);
+    const response = await api.post('/calcpriceplan', form);
     return response.data;
-  } catch (error) {
-    console.log('error', error);
-  }
+  } catch (error) {}
 }
 
 export function Form() {
@@ -36,68 +37,91 @@ export function Form() {
   const [prices, setPrices] = useState();
 
   async function handleCalculatePrices() {
-    console.log('form', form);
     const response = await calculatePrices({form});
     setPrices(response);
-    console.log('dfdfsfsd', response);
   }
 
   function updateForm({
     origin = null,
-    destination = null,
+    destine = null,
     plan = null,
+    time = null,
     type = null,
   }) {
     if (type === 'plan') {
-      console.log('update plan');
       setForm({...form, plan});
     } else if (type === 'origin') {
-      console.log('update origin');
       setForm({...form, origin});
-    } else if (type === 'destination') {
-      console.log('update destination');
-      setForm({...form, destination});
+    } else if (type === 'destine') {
+      setForm({...form, destine});
+    } else if (type === 'time') {
+      setForm({...form, time});
     }
   }
 
   return (
     <Container>
       <Header>
-        <Text>
+        <TextHeader>
           Digite abaixo o ddd de origem e o de destino que vamos mostrar para
           você os beneficios do plano FaleMais.
-        </Text>
+        </TextHeader>
 
         <Content>
           <ContainerInput>
             <Input
               onChangeText={text => updateForm({origin: text, type: 'origin'})}
+              placeholder="DDD de origem"
+              keyboardType="numeric"
             />
           </ContainerInput>
           <ContainerInput>
             <Input
+              placeholder="DDD de Destino"
               onChangeText={text =>
-                updateForm({destination: text, type: 'destination'})
+                updateForm({destine: text, type: 'destine'})
               }
+              keyboardType="numeric"
             />
           </ContainerInput>
         </Content>
+        <Input
+          onChangeText={text => updateForm({time: text, type: 'time'})}
+          placeholder="Tempo da ligação"
+          keyboardType="numeric"
+        />
+        <TextHeader>Planos</TextHeader>
         <Content>
-          <ButtonPlan onPress={() => updateForm({plan: 0, type: 'plan'})}>
-            <Text>FaleMais 30min</Text>
+          <ButtonPlan
+            selected={form.plan === '1'}
+            onPress={() => updateForm({plan: '1', type: 'plan'})}>
+            <TextButtonPlan>FaleMais 30min</TextButtonPlan>
           </ButtonPlan>
-          <ButtonPlan onPress={() => updateForm({plan: 1, type: 'plan'})}>
-            <Text>FaleMais 60min</Text>
+          <ButtonPlan
+            selected={form.plan === '2'}
+            onPress={() => updateForm({plan: '2', type: 'plan'})}>
+            <TextButtonPlan>FaleMais 60min</TextButtonPlan>
           </ButtonPlan>
-          <ButtonPlan onPress={() => updateForm({plan: 2, type: 'plan'})}>
-            <Text>FaleMais 120min</Text>
+          <ButtonPlan
+            selected={form.plan === '3'}
+            onPress={() => updateForm({plan: '3', type: 'plan'})}>
+            <TextButtonPlan>FaleMais 120min</TextButtonPlan>
           </ButtonPlan>
         </Content>
-        <Text>{prices?.totalWithFaleMais}</Text>
+        <ContentPrices>
+          <TextHeader>Custo da ligação com FaleMais:</TextHeader>
+          <TextHeader color={colors.success}>
+            {prices?.totalWithFaleMais}
+          </TextHeader>
+          <TextHeader>Custo da ligação sem FaleMais:</TextHeader>
+          <TextHeader color={colors.danger}>
+            {prices?.totalwithoutFaleMais}
+          </TextHeader>
+        </ContentPrices>
       </Header>
       <ContainerButton>
         <Button onPress={handleCalculatePrices}>
-          <Text>Calcular planos</Text>
+          <TextButton>Comparar planos</TextButton>
         </Button>
       </ContainerButton>
     </Container>
