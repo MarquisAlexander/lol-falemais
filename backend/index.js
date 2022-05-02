@@ -1,6 +1,10 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 const calculatePrice = require("./src/calculatePrice");
+
+app.use(cors());
 
 app.get("/calcpriceplan", async (request, response) => {
 	response.json(
