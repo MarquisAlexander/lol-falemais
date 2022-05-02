@@ -5,14 +5,17 @@ const app = express();
 const calculatePrice = require("./src/calculatePrice");
 
 app.use(cors());
+app.use(express.json());
 
-app.get("/calcpriceplan", async (request, response) => {
+app.post("/calcpriceplan", async (request, response) => {
+	let body = await request.body;
+
 	response.json(
-		calculatePrice.calculatePrice({
-			origin: 011,
-			destine: 017,
-			time: 80,
-			plan: 2,
+		await calculatePrice.calculatePrice({
+			origin: body?.origin,
+			destine: body?.destine,
+			time: body?.time,
+			plan: body?.plan,
 		}),
 	);
 });
