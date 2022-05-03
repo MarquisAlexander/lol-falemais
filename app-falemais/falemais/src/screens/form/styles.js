@@ -4,17 +4,24 @@ import {colors} from '../../assets/colors';
 import {fonts} from '../../assets/fonts';
 
 export const Container = styled.View`
-  background: #fff;
-  padding: 24px;
+  background: #272635;
+  padding: 16px;
   height: 100%;
   justify-content: space-between;
 `;
 
 export const Header = styled.View``;
 
+export const TitleText = styled.Text`
+  font-size: 30px;
+  color: #fff;
+  font-family: ${fonts.bold};
+`;
+
 export const TextHeader = styled.Text`
   font-size: 16px;
-  color: ${props => (props?.color ? props?.color : null)};
+  color: #fff;
+  font-family: ${fonts.regular};
 `;
 
 export const Content = styled.View`
@@ -51,25 +58,6 @@ export const Button = styled.TouchableOpacity`
   border-radius: 5px;
 `;
 
-export const ButtonPlan = styled.TouchableOpacity`
-  border-radius: 5px;
-  padding: 5px;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-  height: 100px;
-  background: ${props =>
-    props?.selected ? colors.successDisable : colors.success};
-  border-color: #dddddd;
-`;
-
-export const TextButtonPlan = styled.Text`
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
-  font-family: ${fonts.regular};
-`;
-
 export const TextButton = styled.Text`
   color: #fff;
   font-size: 16px;
@@ -78,4 +66,6 @@ export const TextButton = styled.Text`
 
 export const ContentPrices = styled.View`
   padding: 24px 0;
+  flex-direction: row;
+  justify-content: space-around;
 `;
