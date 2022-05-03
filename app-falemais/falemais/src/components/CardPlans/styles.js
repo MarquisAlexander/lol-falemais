@@ -13,14 +13,14 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Title = styled.Text`
-	font-size: 16px;
+	font-size: 14px;
 	font-family: ${fonts.medium};
 	color: #000;
 `;
 
 export const Plan = styled.Text`
 	font-size: 32px;
-	padding: 24px 0 16px 0;
+	padding: 20px 0 16px 0;
 	font-family: ${fonts.bold};
 	color: #000;
 `;
@@ -35,13 +35,13 @@ export const Button = styled.View`
 
 export const TextButton = styled.Text`
 	color: #fff;
-	font-size: 16px;
+	font-size: 14px;
 	font-family: ${fonts.regular};
 `;
 
 export const TextButtonPlan = styled.Text`
 	color: #000;
-	font-size: 16px;
+	font-size: 14px;
 	font-family: ${fonts.regular};
 `;
 
@@ -53,9 +53,10 @@ export const Content = styled.View`
 
 export const TextBenefits = styled.Text`
 	color: #000;
-	font-size: 16px;
+	font-size: 14px;
 	font-family: ${fonts.regular};
 	margin-left: 8px;
+	padding-right: 9px;
 `;
 
 export const ContainerBenefits = styled.View`

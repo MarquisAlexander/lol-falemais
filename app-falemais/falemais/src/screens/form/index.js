@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import {FlatList, Text, View, ScrollView} from 'react-native';
+import SelectDropdown from 'react-native-select-dropdown';
+import Icons from 'react-native-vector-icons/Feather';
 
 import {CardPlan} from '../../components/CardPlans';
 import {CardResume} from '../../components/CardResume';
 import {api} from '../../services/api';
+
+const countries = ['Egypt', 'Canada', 'Australia', 'Ireland'];
 
 import {
   Container,
@@ -12,7 +16,6 @@ import {
   ContainerInput,
   Content,
   Button,
-  ContainerButton,
   TextHeader,
   TextButton,
   ContentPrices,
@@ -24,6 +27,28 @@ const INITIAL_STATE = {
   destine: 0,
   time: 0,
   plan: 0,
+};
+
+const codes = [
+  {
+    ddd: '011',
+    array: ['016', '017', '018'],
+  },
+  {ddd: '016', array: ['011']},
+  {ddd: '017', array: ['011']},
+  {ddd: '018', array: ['011']},
+];
+
+const styles = {
+  buttonStyle: {
+    backgroundColor: '#f8f8f8',
+    borderRadius: 5,
+    width: '100%',
+    height: 45,
+  },
+  buttonTextStyle: {
+    fontSize: 16,
+  },
 };
 
 async function calculatePrices({form = {}}) {
@@ -65,7 +90,6 @@ export function Form() {
       <Container>
         <Header>
           <TitleText>Telzin Planos</TitleText>
-
           <TextHeader>
             Digite abaixo o ddd de origem e o de destino que vamos mostrar para
             você os beneficios do plano FaleMais.
@@ -73,21 +97,29 @@ export function Form() {
 
           <Content>
             <ContainerInput>
-              <Input
-                onChangeText={text =>
-                  updateForm({origin: text, type: 'origin'})
-                }
-                placeholder="DDD de origem"
-                keyboardType="numeric"
+              <SelectDropdown
+                data={codes.map(code => code.ddd)}
+                onSelect={item => {
+                  updateForm({origin: item, type: 'origin'});
+                }}
+                defaultButtonText="DDD de origem"
+                buttonTextStyle={styles.buttonTextStyle}
+                buttonStyle={styles.buttonStyle}
               />
             </ContainerInput>
+            <Icons name="arrow-right" size={24} color="#fff" />
             <ContainerInput>
-              <Input
-                placeholder="DDD de Destino"
-                onChangeText={text =>
-                  updateForm({destine: text, type: 'destine'})
+              <SelectDropdown
+                data={
+                  codes[codes.findIndex(code => code.ddd === form.origin)]
+                    ?.array
                 }
-                keyboardType="numeric"
+                onSelect={item => {
+                  updateForm({destine: item, type: 'destine'});
+                }}
+                defaultButtonText="DDD de Destino"
+                buttonTextStyle={styles.buttonTextStyle}
+                buttonStyle={styles.buttonStyle}
               />
             </ContainerInput>
           </Content>
@@ -96,7 +128,7 @@ export function Form() {
             placeholder="Tempo da ligação"
             keyboardType="numeric"
           />
-          
+
           <FlatList
             data={['basic', 'professional', 'team']}
             ListEmptyComponent={() => <Text>Nenhum plano encontrado</Text>}
@@ -106,7 +138,7 @@ export function Form() {
             style={{
               marginLeft: -20,
               marginRight: -20,
-              paddingHorizontal: 20
+              paddingHorizontal: 20,
             }}
             horizontal
             renderItem={({item}) => {
@@ -123,11 +155,9 @@ export function Form() {
             <CardResume price={prices?.totalwithoutFaleMais} type={'without'} />
           </ContentPrices>
         </Header>
-        <ContainerButton>
-          <Button onPress={handleCalculatePrices}>
-            <TextButton>Comparar planos</TextButton>
-          </Button>
-        </ContainerButton>
+        <Button onPress={handleCalculatePrices}>
+          <TextButton>Calcular custos com FaleMais</TextButton>
+        </Button>
       </Container>
     </ScrollView>
   );
