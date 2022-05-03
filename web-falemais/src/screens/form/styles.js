@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-import { colors } from "../../assets/colors";
-import { fonts } from "../../assets/fonts";
-
 export const Container = styled.div`
 	background: #272635;
 `;
@@ -11,7 +8,14 @@ export const Box = styled.div`
 	max-width: 1020px;
 	margin: 0 auto;
 	padding: 2.5rem 5rem;
-	height: 100vh;
+	height: 100%;
+`;
+
+export const TitleText = styled.p`
+	font-size: 3.125rem;
+	color: #fff;
+	font-family: "Inter";
+	font-weight: bold;
 `;
 
 export const NavigationBar = styled.div`
@@ -26,8 +30,9 @@ export const NavigationBar = styled.div`
 export const Header = styled.div``;
 
 export const TextHeader = styled.p`
-	font-size: 16px;
+	font-size: 1rem;
 	color: #fff;
+	font-family: "Inter";
 `;
 
 export const Content = styled.div`
@@ -35,12 +40,15 @@ export const Content = styled.div`
 	justify-content: space-between;
 	flex-direction: row;
 	width: 100%;
-	padding-top: 24px;
+	padding-top: 1.5rem;
+
+	@media (max-width: 998px) {
+		flex-direction: column;
+	}
 `;
 
 export const ContainerInput = styled.div`
 	width: 41%;
-	/* background-color: red; */
 `;
 
 export const Input = styled.input`
@@ -51,7 +59,7 @@ export const Input = styled.input`
 	border-radius: 5px;
 	border-width: 1px;
 	border-color: #dddddd;
-	margin-bottom: 24px;
+	margin-bottom: 1.5rem;
 `;
 
 export const ContainerButton = styled.div`
@@ -64,30 +72,10 @@ export const Button = styled.button`
 	background: #2d7dd2;
 	align-items: center;
 	justify-content: center;
-	padding: 10px 0;
+	padding: 1.5rem 0;
 	border-radius: 5px;
-`;
-
-export const ButtonPlan = styled.button`
-	border-radius: 5px;
-	padding: 1rem;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: start;
-	width: 30%;
-	height: 100px;
-	background: ${(props) =>
-		props?.selected ? colors.successDisable : "#2D7DD2"};
-	border-color: #dddddd;
 	border: none;
 	cursor: pointer;
-`;
-
-export const TextButtonPlan = styled.p`
-	color: #fff;
-	font-size: 16px;
-	text-align: center;
 `;
 
 export const TextButton = styled.p`
@@ -96,29 +84,15 @@ export const TextButton = styled.p`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 16px;
+	font-size: 1rem;
+	font-family: "Inter";
+	font-weight: 600;
 `;
 
 export const ContentPrices = styled.div`
-	padding: 24px 0;
+	padding: 1.5rem 0;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-`;
-
-export const CardWithPlan = styled.div`
-	background-color: #2d7dd2;
-	margin: 50px 10px;
-	padding: 24px;
-	min-height: 140px;
-	border-radius: 8px;
-`;
-
-export const CardWithoutPlan = styled.div`
-	background-color: #fb3640;
-	margin: 50px 10px;
-	padding: 24px;
-	min-height: 140px;
-	border-radius: 8px;
 `;

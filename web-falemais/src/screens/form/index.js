@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import { colors } from "../../assets/colors";
 import { api } from "../../services/api";
+
+import { CardPlan } from "../../components/CardPlans";
 
 import {
 	Container,
@@ -11,16 +12,14 @@ import {
 	Content,
 	Button,
 	ContainerButton,
-	ButtonPlan,
-	TextButtonPlan,
 	TextHeader,
 	TextButton,
 	ContentPrices,
 	NavigationBar,
-	CardWithPlan,
-	CardWithoutPlan,
 	Box,
+	TitleText,
 } from "./styles";
+import { CardResume } from "../../components/CardResume";
 
 const INITIAL_STATE = {
 	origin: 0,
@@ -41,9 +40,9 @@ export function Form() {
 	const [prices, setPrices] = useState();
 
 	async function handleCalculatePrices() {
-		console.log("response");
+		console.log("response", form);
 		const response = await calculatePrices({ form });
-		console.log("dd");
+		console.log("dd", response);
 		setPrices(response);
 	}
 
@@ -78,14 +77,7 @@ export function Form() {
 			</NavigationBar>
 			<Box>
 				<Header>
-					<p
-						style={{
-							color: "#fff",
-							fontSize: 50,
-						}}
-					>
-						Preços
-					</p>
+					<TitleText>Planos</TitleText>
 					<TextHeader>
 						Digite abaixo o ddd de origem e o de destino que vamos mostrar para
 						você os beneficios do plano FaleMais.
@@ -118,46 +110,22 @@ export function Form() {
 						placeholder="Tempo da ligação"
 						keyboardType="numeric"
 					/>
-					<TextHeader>Planos</TextHeader>
 					<Content>
-						<ButtonPlan
-							selected={form.plan === "1"}
-							onClick={() => updateForm({ plan: "1", type: "plan" })}
-						>
-							<TextButtonPlan>Basic</TextButtonPlan>
-							<TextButtonPlan>FaleMais 30min</TextButtonPlan>
-							<TextButtonPlan>Para usuários casuais</TextButtonPlan>
-						</ButtonPlan>
-						<ButtonPlan
-							selected={form.plan === "2"}
-							onClick={() => updateForm({ plan: "2", type: "plan" })}
-						>
-							<TextButtonPlan>Professional</TextButtonPlan>
-							<TextButtonPlan>FaleMais 60min</TextButtonPlan>
-							<TextButtonPlan>Para uso profissional</TextButtonPlan>
-						</ButtonPlan>
-						<ButtonPlan
-							selected={form.plan === "3"}
-							onClick={() => updateForm({ plan: "3", type: "plan" })}
-						>
-							<TextButtonPlan>Team</TextButtonPlan>
-							<TextButtonPlan>FaleMais 120min</TextButtonPlan>
-							<TextButtonPlan>Para você e sua equipe</TextButtonPlan>
-						</ButtonPlan>
+						<CardPlan
+							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
+						/>
+						<CardPlan
+							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
+							plan="professional"
+						/>
+						<CardPlan
+							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
+							plan="team"
+						/>
 					</Content>
 					<ContentPrices>
-						<CardWithPlan>
-							<TextHeader>Custo da ligação com FaleMais:</TextHeader>
-							<TextHeader color={colors.success}>
-								{prices?.totalWithFaleMais}
-							</TextHeader>
-						</CardWithPlan>
-						<CardWithoutPlan>
-							<TextHeader>Custo da ligação sem FaleMais:</TextHeader>
-							<TextHeader color={colors.danger}>
-								{prices?.totalwithoutFaleMais}
-							</TextHeader>
-						</CardWithoutPlan>
+						<CardResume type="with" price={prices?.totalWithFaleMais} />
+						<CardResume type="without" price={prices?.totalwithoutFaleMais} />
 					</ContentPrices>
 				</Header>
 				<ContainerButton>
