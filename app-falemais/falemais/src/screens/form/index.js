@@ -89,7 +89,7 @@ export function Form() {
     <ScrollView>
       <Container>
         <Header>
-          <TitleText>Telzin Planos</TitleText>
+          <TitleText testID='welcome'>Telzin Planos</TitleText>
           <TextHeader>
             Digite abaixo o ddd de origem e o de destino que vamos mostrar para
             você os beneficios do plano FaleMais.
