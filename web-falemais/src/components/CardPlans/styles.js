@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled.div`
 	margin-top: 2rem;
 	border-radius: 10px;
 	padding: 2rem 1rem;
@@ -8,9 +8,13 @@ export const Container = styled.button`
 	flex-direction: column;
 	width: 31%;
 	background: ${(props) => props.color};
-	border-color: #dddddd;
-	border: none;
+	opacity: ${(props) => (props.selected ? 1 : 0.3)};
 	cursor: pointer;
+	transition: transform 0.2s;
+
+	:hover {
+		transform: scale(1.2);
+	}
 
 	@media (max-width: 998px) {
 		width: 100%;

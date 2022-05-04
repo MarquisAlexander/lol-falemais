@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { CardPlan } from "../../components/CardPlans";
+import { DropdownComponent } from "../../components/Dropdown";
 import { calculatePrices, formatterMoney } from "../../utils";
 
 import {
@@ -35,9 +36,7 @@ export function Form() {
 	});
 
 	async function handleCalculatePrices() {
-		console.log("response", form);
 		const response = await calculatePrices({ form });
-		console.log("dd", response);
 		setPrices(response);
 	}
 
@@ -80,21 +79,16 @@ export function Form() {
 
 					<Content>
 						<ContainerInput>
-							<Input
-								onChange={(text) =>
-									updateForm({ origin: text.target.value, type: "origin" })
-								}
+							<DropdownComponent
 								placeholder="DDD de origem"
-								keyboardType="numeric"
+								onSelect={(e) => updateForm({ origin: e, type: "origin" })}
 							/>
 						</ContainerInput>
 						<ContainerInput>
-							<Input
-								placeholder="DDD de Destino"
-								onChange={(text) =>
-									updateForm({ destine: text.target.value, type: "destine" })
-								}
-								keyboardType="numeric"
+							<DropdownComponent
+								placeholder="DDD de destino"
+								firstOption={form.origin}
+								onSelect={(e) => updateForm({ destine: e, type: "destine" })}
 							/>
 						</ContainerInput>
 					</Content>
@@ -107,13 +101,16 @@ export function Form() {
 					/>
 					<Content>
 						<CardPlan
+							selected={form.plan === 0 ? true : form.plan === "1"}
 							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
 						/>
 						<CardPlan
+							selected={form.plan === 0 ? true : form.plan === "2"}
 							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
 							plan="professional"
 						/>
 						<CardPlan
+							selected={form.plan === 0 ? true : form.plan === "3"}
 							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
 							plan="team"
 						/>

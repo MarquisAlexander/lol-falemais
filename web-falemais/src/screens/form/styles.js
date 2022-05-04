@@ -76,10 +76,14 @@ export const Button = styled.button`
 	background: #2d7dd2;
 	align-items: center;
 	justify-content: center;
-	padding: 1.5rem 0;
+	padding: 1rem 0;
 	border-radius: 5px;
 	border: none;
 	cursor: pointer;
+
+	:hover {
+		background-color: #5dadec;
+	}
 `;
 
 export const TextButton = styled.p`
@@ -101,6 +105,6 @@ export const ContentPrices = styled.div`
 	justify-content: space-between;
 
 	@media (max-width: 568px) {
-			flex-direction: column;
+		flex-direction: column;
 	}
 `;
