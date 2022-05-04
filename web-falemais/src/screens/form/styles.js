@@ -9,6 +9,10 @@ export const Box = styled.div`
 	margin: 0 auto;
 	padding: 2.5rem 5rem;
 	height: 100%;
+
+	@media (max-width: 568px) {
+		padding: 2.5rem 1rem;
+	}
 `;
 
 export const TitleText = styled.p`
@@ -94,5 +98,9 @@ export const ContentPrices = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+
+	@media (max-width: 568px) {
+			flex-direction: column;
+	}
 `;

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-import { api } from "../../services/api";
-
 import { CardPlan } from "../../components/CardPlans";
+import { calculatePrices, formatterMoney } from "../../utils";
 
 import {
 	Container,
@@ -28,16 +27,12 @@ const INITIAL_STATE = {
 	plan: 0,
 };
 
-async function calculatePrices({ form = {} }) {
-	try {
-		const response = await api.post("/calcpriceplan", form);
-		return response.data;
-	} catch (error) {}
-}
-
 export function Form() {
 	const [form, setForm] = useState(INITIAL_STATE);
-	const [prices, setPrices] = useState();
+	const [prices, setPrices] = useState({
+		totalWithFaleMais: 0,
+		totalwithoutFaleMais: 0,
+	});
 
 	async function handleCalculatePrices() {
 		console.log("response", form);
@@ -124,8 +119,14 @@ export function Form() {
 						/>
 					</Content>
 					<ContentPrices>
-						<CardResume type="with" price={prices?.totalWithFaleMais} />
-						<CardResume type="without" price={prices?.totalwithoutFaleMais} />
+						<CardResume
+							type="with"
+							price={formatterMoney.format(prices?.totalWithFaleMais)}
+						/>
+						<CardResume
+							type="without"
+							price={formatterMoney.format(prices?.totalwithoutFaleMais)}
+						/>
 					</ContentPrices>
 				</Header>
 				<ContainerButton>
