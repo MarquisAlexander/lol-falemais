@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const calculatePrice = require("./src/calculatePrice");
+const calculatePrice = require("./src/routes/calculatePrice");
 
 app.use(cors());
 app.use(express.json());
