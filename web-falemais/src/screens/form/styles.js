@@ -42,12 +42,13 @@ export const TextHeader = styled.p`
 export const Content = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	flex-direction: row;
 	width: 100%;
-	padding-top: 1.5rem;
+	/* padding-top: 1.5rem; */
 
 	@media (max-width: 998px) {
-		flex-direction: column;
+		flex-direction: ${(props) => props.flexDirection && "column"};
 	}
 `;
 
@@ -98,7 +99,7 @@ export const TextButton = styled.p`
 `;
 
 export const ContentPrices = styled.div`
-	padding: 1.5rem 0;
+	padding: 3rem 0;
 	display: flex;
 	flex-direction: row;
 	align-items: center;

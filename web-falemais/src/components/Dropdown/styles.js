@@ -10,7 +10,7 @@ export const Container = styled.div`
 		align-items: center;
 		border: 0;
 		height: 45px;
-		margin-bottom: 25px;
+		margin: 25px 0;
 	}
 	.arrows {
 		margin-top: 0.4rem;

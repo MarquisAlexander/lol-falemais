@@ -24,6 +24,8 @@ Extras:
 
 - Main Libs
   - [React icons](https://react-icons.github.io/react-icons/)
+  - [React Toastify](https://fkhadra.github.io/react-toastify/introduction)
+  - [React Loading Skeleton](https://www.npmjs.com/package/react-loading-skeleton)
 
 ## 💻 Projeto
 

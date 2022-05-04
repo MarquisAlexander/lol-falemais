@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaArrowRight } from "react-icons/fa";
 
 import { CardPlan } from "../../components/CardPlans";
 import { DropdownComponent } from "../../components/Dropdown";
@@ -28,16 +31,41 @@ const INITIAL_STATE = {
 	plan: 0,
 };
 
+const messagesError = {
+	origin: "Selecione o ddd de origem",
+	destine: "Selecione o ddd de destino",
+	time: "Digite o tempo de duração",
+	plan: "Selecione o plano",
+};
+
 export function Form() {
+	const [loading, setLoading] = useState(false);
 	const [form, setForm] = useState(INITIAL_STATE);
 	const [prices, setPrices] = useState({
 		totalWithFaleMais: 0,
 		totalwithoutFaleMais: 0,
 	});
 
+	function validateForm() {
+		let isValid = true;
+		Object.keys(form).forEach((item) => {
+			if (form[item] === 0) {
+				toast.error(`${messagesError[item]}`);
+				isValid = false;
+			}
+		});
+		return isValid;
+	}
+
 	async function handleCalculatePrices() {
-		const response = await calculatePrices({ form });
-		setPrices(response);
+		setLoading(true);
+		const isValid = validateForm();
+
+		if (isValid) {
+			const response = await calculatePrices({ form });
+			setPrices(response);
+		}
+		setLoading(false);
 	}
 
 	function updateForm({
@@ -60,6 +88,8 @@ export function Form() {
 
 	return (
 		<Container>
+			<ToastContainer />
+
 			<NavigationBar>
 				<p
 					style={{
@@ -84,6 +114,7 @@ export function Form() {
 								onSelect={(e) => updateForm({ origin: e, type: "origin" })}
 							/>
 						</ContainerInput>
+						<FaArrowRight size={"1rem"} color={"#fff"} />
 						<ContainerInput>
 							<DropdownComponent
 								placeholder="DDD de destino"
@@ -99,7 +130,7 @@ export function Form() {
 						placeholder="Tempo da ligação"
 						keyboardType="numeric"
 					/>
-					<Content>
+					<Content flexDirection={true}>
 						<CardPlan
 							selected={form.plan === 0 ? true : form.plan === "1"}
 							onClick={(obj) => updateForm({ plan: obj.plan, type: obj.type })}
@@ -117,10 +148,12 @@ export function Form() {
 					</Content>
 					<ContentPrices>
 						<CardResume
+							loading={loading}
 							type="with"
 							price={formatterMoney.format(prices?.totalWithFaleMais)}
 						/>
 						<CardResume
+							loading={loading}
 							type="without"
 							price={formatterMoney.format(prices?.totalwithoutFaleMais)}
 						/>
