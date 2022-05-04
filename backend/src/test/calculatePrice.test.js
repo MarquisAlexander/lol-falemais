@@ -1,6 +1,6 @@
 const calculatePrice = require("../routes/calculatePrice");
 
-describe("Testing isolated functions", () => {
+describe("🧪 Testing isolated functions", () => {
 	it("Calculate difference between plan time limit and desired time", async () => {
 		const data = await calculatePrice.getPricePerMinutes({
 			origin: "011",
@@ -39,7 +39,7 @@ describe("Testing isolated functions", () => {
 	});
 });
 
-describe("Testing main flow", () => {
+describe("🧪 Testing main flow", () => {
 	it("Main flow", async () => {
 		const data = await calculatePrice.calculatePrice({
 			origin: "011",
