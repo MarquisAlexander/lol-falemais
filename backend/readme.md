@@ -57,7 +57,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ### ➡️ Rodar projeto
 
-- Para rodar localmente, basta entrar na pasta raiz e rodar `docker-compose up`, esse comando vai executar os seguintes passos
+- Para rodar localmente, basta entrar na pasta raiz do backend e rodar `docker-compose up`, esse comando vai executar os seguintes passos
   - criar uma imagem para o docker, 
   - criar container para o projeto nodeJS
   - criar um container para o banco de dados 
@@ -68,6 +68,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ### ➡️ Tests (como testar)
 
-- Com o banco de dados funcionando, navegue até a pasta raiz do projeto basta rodar `yarn test` ou `npm run test` e aguardar.
+- Com o banco de dados funcionando, navegue até a pasta raiz do projeto backend e basta rodar `yarn test` ou `npm run test` e aguardar.
 
 README feito com ❤️ by **MarquisAlexander**
