@@ -55,20 +55,19 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🧪 Como rodar o projeto local e testar
 
-### ➡️ Criar o banco de dados no docker
-
-- Com o docker já instalado, basta rodar `docker run --name telzin_postgres -e POSTGRES_PASSWORD=mm1234 -p 5432:5432 -d postgres`
-- Rodar `docker ps` para verificar se o banco de dados foi criado.
-
 ### ➡️ Rodar o projeto
 
-- Para rodar localmente, basta entrar na pasta raiz e rodar `yarn start` ou `npm run start`.
-- Ainda na pasta raiz, rode um `yarn start` para criar a tabela caso não exista e popular a tabela com os dados.
-- Depois basta rodar um `yarn nodemon index.ts`.
+- Para rodar localmente, basta entrar na pasta raiz e rodar `docker-compose up`, esse comando vai executar os seguintes passos
+  - criar uma imagem para o docker, 
+  - criar container para o projeto nodeJS
+  - criar um container para o banco de dados 
+  - Popular o banco de dados
+
+  **você pode acompanhar tudo lá no arquivo docker-composer.yml**
 - Tudo pronto, agora é só acessar os endpoins e ver a aplicação backend funcionando.
 
 ### ➡️ Tests (como testar)
 
-- Com o banco de dados funcionando, na pasta raiz do projeto basta rodar `yarn test` ou `npm run test` e aguardar.
+- Com o banco de dados funcionando, navegue até a pasta raiz do projeto basta rodar `yarn test` ou `npm run test` e aguardar.
 
 README feito com ❤️ by **MarquisAlexander**

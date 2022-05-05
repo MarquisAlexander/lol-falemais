@@ -26,7 +26,7 @@ app.get("/getallcodesddd", async (request, response) => {
 	response.json(body);
 });
 
-const PORT = 3001;
+const PORT = 3333;
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });

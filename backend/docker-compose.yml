@@ -1,0 +1,26 @@
+version : "3.9"
+
+services:
+  database_telzin:
+    image: postgres
+    container_name: database_telzin
+    restart: always
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=mm1234
+      - POSTGRES_DB=telzin
+    volumes:
+      - pgdata:/data/postgres
+    network_mode: host
+  app_telzin:
+    build: .
+    container_name: app_telzin
+    volumes:
+      - .:/home/node/app
+    network_mode: host
+    command: bash -c "sleep 30 && npm run populateTable && npm run server"
+
+
+volumes:
+  pgdata:
+    driver: local
