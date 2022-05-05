@@ -20,6 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Express](https://expressjs.com/pt-br/)
 - [Nodemon](https://www.npmjs.com/package/nodemon)
 - [Jest](https://jestjs.io/pt-BR/)
+- [TypeORM](https://typeorm.io/)
 
 ## 💻 Projeto
 - Essa **Aplicação** foi desenvolvida para disponibilizar para os clientes(frontend) uma forma perfomatica e eficas para mostrar para ajudar o usuário a escolher o melhor plano de ligação da Telzin,ajudando o usuário a ver as vantagem que ele tem ao contratar os planos de ligação da Telzin, mostrando para ele uma simples comparação de preços ao usar e não utilizar o plano para realizar chamadas.

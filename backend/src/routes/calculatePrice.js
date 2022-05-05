@@ -1,19 +1,9 @@
+import { GetPricePerMinutes } from "../database/utils";
 const round = require("../utils");
 
 async function getPricePerMinutes({ origin, destine }) {
-	if (origin == "011" && destine == "016") {
-		return 1.9;
-	} else if (origin == "016" && destine == "011") {
-		return 2.9;
-	} else if (origin == "011" && destine == "017") {
-		return 1.7;
-	} else if (origin == "017" && destine == "011") {
-		return 2.7;
-	} else if (origin === "011" && destine === "018") {
-		return 0.9;
-	} else if (origin === "018" && destine === "011") {
-		return 1.9;
-	}
+	const resp = await GetPricePerMinutes({ origin, destine });
+	return Number(resp[0].pricepermin);
 }
 
 async function calcDiffMinutes({ plan, time }) {
