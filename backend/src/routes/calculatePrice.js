@@ -3,18 +3,31 @@ const round = require("../utils");
 
 async function getPricePerMinutes({ origin, destine }) {
 	const resp = await GetPricePerMinutes({ origin, destine });
-	console.log("resp", resp);
 	return Number(resp[0].pricepermin);
 }
 
 async function calcDiffMinutes({ plan, time }) {
+	let diff = 0;
 	if (Number(plan) === 1) {
-		return Math.abs(time - 30);
+		if (time <= 30) {
+			diff = 0;
+		} else {
+			diff = Math.abs(time - 30);
+		}
 	} else if (Number(plan) === 2) {
-		return Math.abs(time - 60);
+		if (time <= 60) {
+			diff = 0;
+		} else {
+			diff = Math.abs(time - 60);
+		}
 	} else if (Number(plan) === 3) {
-		return Math.abs(time - 120);
+		if (time <= 120) {
+			diff = 0;
+		} else {
+			diff = Math.abs(time - 120);
+		}
 	}
+	return diff;
 }
 
 async function calculateExtraPrice({ pricePerMin }) {

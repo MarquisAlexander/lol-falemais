@@ -103,7 +103,13 @@ export function Form() {
 				<Header>
 					<TitleText>Planos</TitleText>
 					<TextHeader>
-						Digite abaixo o ddd de origem e o de destino que vamos mostrar para
+						Com o novo produto FaleMais da Telzir o cliente adquire um plano e
+						pode falar de graça até um determinado tempo (em minutos) e só paga
+						os minutos excedentes. Os minutos excedentes tem um acréscimo de 10%
+						sobre a tarifa normal do minuto
+					</TextHeader>
+					<TextHeader>
+						Selecione abaixo o ddd de origem e o de destino e digite quanto tempo de ligação você usa que vamos mostrar para
 						você os beneficios do plano FaleMais.
 					</TextHeader>
 
