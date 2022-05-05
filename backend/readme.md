@@ -5,12 +5,12 @@
 </h2>
 
 <p align="center">
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-informações">Informações</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-aplicação-online">Aplicação online</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-documentação no Insomnia(Endpoints)">Documentação no Insomnia(Endpoints)</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#-como_rodar_o_projeto_local_e_testar">Como rodar o projeto local</a>
+  <a href="#-documentação-no-insomnia-endpoints">Documentação endpoints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-rodar-o-projeto-local-e-testar">Como rodar o projeto</a>
 </p>
 
 ## Tecnologias
@@ -27,7 +27,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - Essa **Aplicação** foi desenvolvida para disponibilizar para os clientes(frontend) uma forma perfomatica e eficas para mostrar para ajudar o usuário a escolher o melhor plano de ligação da Telzin,ajudando o usuário a ver as vantagem que ele tem ao contratar os planos de ligação da Telzin, mostrando para ele uma simples comparação de preços ao usar e não utilizar o plano para realizar chamadas.
 
-## 📔 Documentação no Insomnia(Endpoints)
+## 📔 Documentação no Insomnia (Endpoints)
 
 - Esse projeto conta com os seguintes endpoint:
   - `POST` **/calcpriceplan** - endpoint para calcular o preço de quanto você vai economizar caso você use algum plano de ligação da Telzin.
@@ -55,7 +55,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🧪 Como rodar o projeto local e testar
 
-### ➡️ Rodar o projeto
+### ➡️ Rodar projeto
 
 - Para rodar localmente, basta entrar na pasta raiz e rodar `docker-compose up`, esse comando vai executar os seguintes passos
   - criar uma imagem para o docker, 
@@ -63,7 +63,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
   - criar um container para o banco de dados 
   - Popular o banco de dados
 
-  **você pode acompanhar tudo lá no arquivo docker-composer.yml**
+  **você pode acompanhar todo o passo a passo lá no arquivo docker-composer.yml**
 - Tudo pronto, agora é só acessar os endpoins e ver a aplicação backend funcionando.
 
 ### ➡️ Tests (como testar)
