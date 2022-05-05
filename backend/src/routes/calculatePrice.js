@@ -3,6 +3,7 @@ const round = require("../utils");
 
 async function getPricePerMinutes({ origin, destine }) {
 	const resp = await GetPricePerMinutes({ origin, destine });
+	console.log("resp", resp);
 	return Number(resp[0].pricepermin);
 }
 
