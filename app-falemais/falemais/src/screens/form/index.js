@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {FlatList, Text, View, ScrollView} from 'react-native';
+import {FlatList, Text, View, ScrollView, Alert} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icons from 'react-native-vector-icons/Feather';
 
 import {CardPlan} from '../../components/CardPlans';
 import {CardResume} from '../../components/CardResume';
-import {api} from '../../services/api';
-
-const countries = ['Egypt', 'Canada', 'Australia', 'Ireland'];
+import {calculatePrices, formatterMoney} from '../../utils';
 
 import {
   Container,
@@ -27,6 +25,13 @@ const INITIAL_STATE = {
   destine: 0,
   time: 0,
   plan: 0,
+};
+
+const messagesError = {
+  origin: 'Selecione o ddd de origem',
+  destine: 'Selecione o ddd de destino',
+  time: 'Digite o tempo de duração',
+  plan: 'Selecione o plano',
 };
 
 const codes = [
@@ -51,20 +56,30 @@ const styles = {
   },
 };
 
-async function calculatePrices({form = {}}) {
-  try {
-    const response = await api.post('/calcpriceplan', form);
-    return response.data;
-  } catch (error) {}
-}
-
 export function Form() {
   const [form, setForm] = useState(INITIAL_STATE);
   const [prices, setPrices] = useState();
 
   async function handleCalculatePrices() {
-    const response = await calculatePrices({form});
-    setPrices(response);
+    const isValid = validateForm();
+
+    if (isValid) {
+      const response = await calculatePrices({form});
+      setPrices(response);
+    }
+  }
+
+  function validateForm() {
+    let isValid = true;
+    Object.keys(form).every(item => {
+      if (form[item] === 0) {
+        Alert.alert('Erro', `${messagesError[item]}`);
+        return (isValid = false);
+      } else {
+        return (isValid = true);
+      }
+    });
+    return isValid;
   }
 
   function updateForm({
@@ -81,7 +96,8 @@ export function Form() {
     } else if (type === 'destine') {
       setForm({...form, destine});
     } else if (type === 'time') {
-      setForm({...form, time});
+      let clearNumber = time.replace(/[^0-9]/g, '');
+      setForm({...form, time: clearNumber});
     }
   }
 
@@ -89,10 +105,11 @@ export function Form() {
     <ScrollView>
       <Container>
         <Header>
-          <TitleText testID='welcome'>Telzin Planos</TitleText>
+          <TitleText testID="welcome">Telzin Planos</TitleText>
           <TextHeader>
-            Digite abaixo o ddd de origem e o de destino que vamos mostrar para
-            você os beneficios do plano FaleMais.
+            Selecione abaixo o ddd de origem e o de destino e digite quanto
+            tempo de ligação você usa que vamos mostrar para você os beneficios
+            do plano FaleMais.
           </TextHeader>
 
           <Content>
@@ -127,6 +144,7 @@ export function Form() {
             onChangeText={text => updateForm({time: text, type: 'time'})}
             placeholder="Tempo da ligação"
             keyboardType="numeric"
+            value={form.time}
           />
 
           <FlatList
@@ -151,6 +169,7 @@ export function Form() {
             }}
           />
           <ContentPrices>
+            {console.log('quii', prices?.totalWithFaleMais)}
             <CardResume price={prices?.totalWithFaleMais} type={'with'} />
             <CardResume price={prices?.totalwithoutFaleMais} type={'without'} />
           </ContentPrices>

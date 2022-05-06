@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Title, TextPrice} from './styles';
+import NumberFormat from 'react-number-format';
 
 const typePrice = {
   with: {
@@ -14,7 +15,15 @@ export function CardResume({price = 0, type = 'with'}) {
   return (
     <Container>
       <Title>Custo da ligação com FaleMais:</Title>
-      <TextPrice color={typePrice[type].color}>R$ {price}</TextPrice>
+      <NumberFormat
+        value={price}
+        displayType="text"
+        thousandSeparator
+        prefix="R$ "
+        renderText={value => (
+          <TextPrice color={typePrice[type].color}>{value}</TextPrice>
+        )}
+      />
     </Container>
   );
 }
