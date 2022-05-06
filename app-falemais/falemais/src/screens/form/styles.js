@@ -1,15 +1,25 @@
 import styled from 'styled-components';
+import {getStatusBarHeight, getBottomSpace} from 'react-native-iphone-x-helper';
 
 import {fonts} from '../../assets/fonts';
 
 export const Container = styled.View`
   background: #272635;
-  padding: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: ${getStatusBarHeight() + 16}px;
+  padding-bottom: ${getBottomSpace() + 16}px;
   height: 100%;
   justify-content: space-between;
 `;
 
-export const Header = styled.View``;
+export const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+`;
+export const Content = styled.View``;
 
 export const TitleText = styled.Text`
   font-size: 30px;
@@ -23,7 +33,7 @@ export const TextHeader = styled.Text`
   font-family: ${fonts.regular};
 `;
 
-export const Content = styled.View`
+export const BoxForm = styled.View`
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
@@ -68,3 +78,35 @@ export const ContentPrices = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `;
+
+export const BottomSheetContent = styled.View`
+  padding: 16px;
+`;
+
+export const TextSheet = styled.Text`
+  color: #000;
+  font-size: 14px;
+  font-family: ${fonts.regular};
+`;
+
+export const styles = {
+  buttonStyle: {
+    backgroundColor: '#f8f8f8',
+    borderRadius: 5,
+    width: '100%',
+    height: 45,
+  },
+  buttonTextStyle: {
+    fontSize: 16,
+  },
+  bottomSheet: {
+    backgroundColor: '#000',
+  },
+  backgroundBottomSheet: {
+    backgroundColor: '#fff',
+  },
+  handleIndicator: {
+    backgroundColor: '#272635',
+    width: 56,
+  },
+};

@@ -1,23 +1,36 @@
-import React, {useState} from 'react';
-import {FlatList, Text, View, ScrollView, Alert} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {
+  FlatList,
+  Text,
+  View,
+  ScrollView,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icons from 'react-native-vector-icons/Feather';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 import {CardPlan} from '../../components/CardPlans';
 import {CardResume} from '../../components/CardResume';
-import {calculatePrices, formatterMoney} from '../../utils';
+import {calculatePrices} from '../../utils';
+import {codes} from '../../assets/constants';
 
 import {
   Container,
   Header,
   Input,
   ContainerInput,
-  Content,
+  BoxForm,
   Button,
   TextHeader,
   TextButton,
   ContentPrices,
   TitleText,
+  Content,
+  BottomSheetContent,
+  TextSheet,
+  styles,
 } from './styles';
 
 const INITIAL_STATE = {
@@ -34,31 +47,11 @@ const messagesError = {
   plan: 'Selecione o plano',
 };
 
-const codes = [
-  {
-    ddd: '011',
-    array: ['016', '017', '018'],
-  },
-  {ddd: '016', array: ['011']},
-  {ddd: '017', array: ['011']},
-  {ddd: '018', array: ['011']},
-];
-
-const styles = {
-  buttonStyle: {
-    backgroundColor: '#f8f8f8',
-    borderRadius: 5,
-    width: '100%',
-    height: 45,
-  },
-  buttonTextStyle: {
-    fontSize: 16,
-  },
-};
-
 export function Form() {
   const [form, setForm] = useState(INITIAL_STATE);
   const [prices, setPrices] = useState();
+
+  const bottomSheetRef = useRef(null);
 
   async function handleCalculatePrices() {
     const isValid = validateForm();
@@ -101,18 +94,27 @@ export function Form() {
     }
   }
 
+  function handleOpen() {
+    bottomSheetRef.current?.expand();
+  }
+
   return (
     <ScrollView>
       <Container>
-        <Header>
-          <TitleText testID="welcome">Telzin Planos</TitleText>
+        <Content>
+          <Header>
+            <TitleText testID="welcome">Telzin Planos</TitleText>
+            <TouchableOpacity onPress={handleOpen}>
+              <Icons name="info" color={'#fff'} size={24} />
+            </TouchableOpacity>
+          </Header>
           <TextHeader>
             Selecione abaixo o ddd de origem e o de destino e digite quanto
             tempo de ligação você usa que vamos mostrar para você os beneficios
             do plano FaleMais.
           </TextHeader>
 
-          <Content>
+          <BoxForm>
             <ContainerInput>
               <SelectDropdown
                 data={codes.map(code => code.ddd)}
@@ -139,7 +141,7 @@ export function Form() {
                 buttonStyle={styles.buttonStyle}
               />
             </ContainerInput>
-          </Content>
+          </BoxForm>
           <Input
             onChangeText={text => updateForm({time: text, type: 'time'})}
             placeholder="Tempo da ligação"
@@ -169,14 +171,27 @@ export function Form() {
             }}
           />
           <ContentPrices>
-            {console.log('quii', prices?.totalWithFaleMais)}
             <CardResume price={prices?.totalWithFaleMais} type={'with'} />
             <CardResume price={prices?.totalwithoutFaleMais} type={'without'} />
           </ContentPrices>
-        </Header>
+        </Content>
         <Button onPress={handleCalculatePrices}>
           <TextButton>Calcular custos com FaleMais</TextButton>
         </Button>
+        <BottomSheet
+          ref={bottomSheetRef}
+          snapPoints={[1, 380]}
+          backgroundStyle={styles.backgroundBottomSheet}
+          handleIndicatorStyle={styles.handleIndicator}>
+          <BottomSheetContent>
+            <TextSheet>
+              Com o novo produto FaleMais da Telzir o cliente adquire um plano e
+              pode falar de graça até um determinado tempo (em minutos) e só
+              paga os minutos excedentes. Os minutos excedentes tem um acréscimo
+              de 10% sobre a tarifa normal do minuto
+            </TextSheet>
+          </BottomSheetContent>
+        </BottomSheet>
       </Container>
     </ScrollView>
   );

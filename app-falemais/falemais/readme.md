@@ -5,10 +5,12 @@
 </h2>
 
 <p align="center">
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-informações">Informações</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>
+  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-download-do-app">Download do app</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-rodar-o-app-local">Rodar o app local</a>
 </p>
 
 ## Tecnologias
@@ -18,11 +20,15 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React Native](https://facebook.github.io/react-native/)
 - [Axios](https://axios-http.com/ptbr/docs/intro)
 - [Styled components](https://styled-components.com/)
+- [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
+- [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/)
 
 Extras:
 
 - Main Libs
+  - [React Native Bottom Sheet](https://gorhom.github.io/react-native-bottom-sheet/)
   - [React native vector icons](https://github.com/oblador/react-native-vector-icons)
+  - [React native iphone x helper](https://github.com/ptelad/react-native-iphone-x-helper)
 
 ## 💻 Projeto
 
@@ -30,7 +36,8 @@ Extras:
 
 ## 🤔 Informações
 
-- Esse projeto foi desenvolvido baseado na aplicação be-the-hero da semanaonmistack 11 da rockeseat.
+- Os testes utilizando o Detox não estão funcionando corretamente, enfrentei diversos problema ao tentar rodar os testes, para não atrasar o projeto optei por pular essa etapa.
+- Não tenho fácil acessso a algum sistema mac por isso pode ter alguns erros de ui ou de config de lib, porém resolvi o máximo de problemas possiveis que poderiam acontecer no ios, como por exemplo, a ui que poderia ficar quebrada em alguns iphones por causa do notch e a barra de gestos no bottom da tela.
 
 ## 📲 Download do app
 
@@ -39,9 +46,13 @@ Extras:
 
 ## 🖼 Layout
 
-![screen1](https://user-images.githubusercontent.com/51330232/80516048-48851f80-8959-11ea-9d6f-275fdbb1bad6.PNG)
+print|print
+:--:|:--:
+![Captura de tela de 2022-05-06 11-22-52](https://user-images.githubusercontent.com/51330232/167152519-2c2785a6-991d-4687-8d26-e14b83393ef9.png)|![Captura de tela de 2022-05-06 11-23-13](https://user-images.githubusercontent.com/51330232/167152521-005160ce-5e45-4674-8629-74502b8ca68b.png)
+## 🧪 Rodar o app local
+- Para rodar o app local, basta entrar na pasta raiz do projeto mobile **app-falemais/falemais** e executar o comando `yarn react-native run-android`.
 
-![screen2](https://user-images.githubusercontent.com/51330232/80516131-6488c100-8959-11ea-92e2-c1812475b166.PNG)
+**obs**: O backend precisa estar rodando para que o app funcione 100%.
 
 
 README feito com ❤️ by **MarquisAlexander**
