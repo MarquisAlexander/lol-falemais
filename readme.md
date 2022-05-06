@@ -24,8 +24,8 @@
 ## Atenção!
 - Ao acessar cada projeto individualmente você verá mais detalhes sobre as tecnologias e ferramentas usadas para o desenvolvimento.
 
-  - [Projeto Web(ReactJS)]()
-  - [Projeto Mobile(ReactNative)]()
-  - [Projeto BackEnd(NodeJS)]()
+  - [Projeto Web(ReactJS)](https://github.com/MarquisAlexander/lol-falemais/tree/master/web-falemais)
+  - [Projeto Mobile(ReactNative)](https://github.com/MarquisAlexander/lol-falemais/tree/master/app-falemais/falemais)
+  - [Projeto BackEnd(NodeJS)](https://github.com/MarquisAlexander/lol-falemais/tree/master/backend)
   
 ## 🏗 Caso você queira ajudar o projeto, pode baixar ele adicionar as features ou consertar alguma coisa, basta criar uma branch e abrir um pull request.
