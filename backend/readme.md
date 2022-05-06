@@ -31,6 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - Esse projeto conta com os seguintes endpoint:
   - `POST` **/calcpriceplan** - endpoint para calcular o preço de quanto você vai economizar caso você use algum plano de ligação da Telzin.
+  - `GET` **/getallcodesddd** - endpoint que retorna uma lista com todos os códigos de DDDs disponíveis.
 - Exite toda uma documentação completa no insomnia você consegue baixar ela [clicando aqui](), lá você consegue ver todas as informações das rotas como, metodos, parametros, exemplos do body, etc.
 
 ## 🤔 Informações
