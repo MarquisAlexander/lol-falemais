@@ -48,13 +48,11 @@ Extras:
 
 ## 🖼 Layout
 
-![screen1](https://user-images.githubusercontent.com/51330232/80516048-48851f80-8959-11ea-9d6f-275fdbb1bad6.PNG)
-
-![screen2](https://user-images.githubusercontent.com/51330232/80516131-6488c100-8959-11ea-92e2-c1812475b166.PNG)
+![Captura de tela de 2022-05-06 11-58-32](https://user-images.githubusercontent.com/51330232/167159135-fd376e4d-2d0b-4515-819b-66758d96db49.png)
 
 <h1></h1>
 
-## 🏗 Caso você queira ajudar o projeto, pode baixar ele adicionar as features ou consertar alguma coisa, basta criar uma branch e nos mandar um pull request.
+## 🏗 Caso você queira ajudar o projeto, pode baixar ele adicionar as features ou consertar alguma coisa, basta criar uma branch e abrir um pull request.
 
 <h1></h1>
 

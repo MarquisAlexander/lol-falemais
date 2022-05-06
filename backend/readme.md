@@ -18,6 +18,7 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [NodeJS](https://nodejs.org/en/)
+- [Postgresql](https://www.postgresql.org/)
 - [Express](https://expressjs.com/pt-br/)
 - [Nodemon](https://www.npmjs.com/package/nodemon)
 - [Jest](https://jestjs.io/pt-BR/)
