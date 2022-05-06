@@ -42,7 +42,7 @@ Extras:
 
 ## 🎉 Aplicação online
 
-- Você pode acessar a aplicação online [clicando aqui](https://frontend-controletarefa.herokuapp.com/).
+- Você pode acessar a aplicação online [clicando aqui](https://62754ae43b34a0086899c5ae--serene-starship-4b1f55.netlify.app/).
 
 <h1></h1>
 
