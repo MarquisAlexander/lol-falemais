@@ -1,6 +1,6 @@
 <h1></h1>
 <h2 align="center">
-  🚀 App Telzin
+  🚀 App Telzir
 </h2>
 
 <p align="center">
@@ -29,7 +29,7 @@ Extras:
 
 ## 💻 Projeto
 
-- O **WEB FALEMAIS** é um projeto que tem o objetivo de ajudar o usuário a ver as vantagem que ele tem ao contratar os planos de ligação da Telzin, mostrando para ele uma simples comparação de preços ao usar e não utilizar o plano para realizar chamadas.
+- O **WEB FALEMAIS** é um projeto que tem o objetivo de ajudar o usuário a ver as vantagem que ele tem ao contratar os planos de ligação da Telzir, mostrando para ele uma simples comparação de preços ao usar e não utilizar o plano para realizar chamadas.
 
 <h1></h1>
 
